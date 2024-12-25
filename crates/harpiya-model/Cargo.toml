@@ -1,0 +1,59 @@
+[package]
+name = "harpiya-model"
+description = "Domain models for harpiya."
+version = "0.28.1"
+rust-version = "1.85"
+edition = "2024"
+
+[package.metadata.docs.rs]
+cargo-args = ["-Zunstable-options", "-Zrustdoc-scrape-examples"]
+rustdoc-args = ["--cfg", "docsrs"]
+
+[features]
+default = [
+    "namespace",
+    "visibility",
+    "tags",
+    "owner-id",
+    "maintainer-id",
+    "edition",
+]
+namespace = []
+visibility = []
+tags = []
+owner-id = []
+maintainer-id = []
+edition = []
+
+[dependencies]
+tracing = "0.1.41"
+
+[dependencies.serde]
+version = "1.0.216"
+features = ["derive"]
+
+[dependencies.sqlx]
+version = "0.8.2"
+default-features = false
+
+[dependencies.strum]
+version = "0.26.3"
+features = ["derive"]
+
+[dependencies.harpiya-auth]
+path = "../harpiya-auth"
+version = "0.2.0"
+features = ["jwt"]
+
+[dependencies.harpiya-core]
+path = "../harpiya-core"
+version = "0.30.1"
+features = ["validator-email"]
+
+[dependencies.harpiya-derive]
+path = "../harpiya-derive"
+version = "0.28.1"
+
+[dependencies.harpiya-orm]
+path = "../harpiya-orm"
+version = "0.2.1"

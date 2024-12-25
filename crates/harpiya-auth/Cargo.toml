@@ -1,0 +1,80 @@
+[package]
+name = "harpiya-auth"
+description = "Authentication and authorization for harpiya."
+version = "0.2.1"
+rust-version = "1.85"
+edition = "2024"
+
+[package.metadata.docs.rs]
+features = [
+    "jwt",
+    "oidc",
+    "opa",
+    "sqids",
+]
+cargo-args = ["-Zunstable-options", "-Zrustdoc-scrape-examples"]
+rustdoc-args = ["--cfg", "docsrs"]
+
+[features]
+crypto-sm = ["harpiya-core/crypto-sm"]
+jwt = ["dep:jwt-simple", "regorus?/jwt"]
+oidc = ["dep:rauthy-client"]
+opa = ["regorus"]
+sqids = ["dep:sqids"]
+
+[dependencies]
+cfg-if = "1.0"
+hmac = "0.12.1"
+parking_lot = "0.12.3"
+rand = "0.8.5"
+tracing = "0.1.41"
+
+[dependencies.jwt-simple]
+version = "0.12.11"
+optional = true
+default-features = false
+features = ["pure-rust"]
+
+[dependencies.rauthy-client]
+version = "0.5.0"
+optional = true
+
+[dependencies.regorus]
+version = "0.2.7"
+optional = true
+default-features = false
+features = [
+    "arc",
+    "base64",
+    "base64url",
+    "crypto",
+    "glob",
+    "hex",
+    "http",
+    "jsonschema",
+    "regex",
+    "semver",
+    "time",
+    "urlquery",
+    "uuid",
+]
+
+[dependencies.serde]
+version = "1.0.216"
+features = ["derive"]
+
+[dependencies.sm3]
+version = "0.4.2"
+optional = true
+
+[dependencies.sqids]
+version = "0.4.1"
+optional = true
+
+[dependencies.toml]
+version = "0.8.19"
+default-features = false
+
+[dependencies.harpiya-core]
+path = "../harpiya-core"
+version = "0.30.0"

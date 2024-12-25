@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="EMPTY_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-auth/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-channel/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-chatbot/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-connector/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-core/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-core/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-derive/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-extra/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-http/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-model/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-openapi/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-orm/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-rs/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/harpiya-storage/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

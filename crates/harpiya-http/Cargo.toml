@@ -1,0 +1,138 @@
+[package]
+name = "harpiya-http"
+description = "HTTP requests and responses for harpiya."
+version = "0.2.0"
+rust-version = "1.85"
+edition = "2024"
+
+[package.metadata.docs.rs]
+features = [
+    "auth",
+    "cookie",
+    "i18n",
+    "jwt",
+    "metrics",
+    "view",
+]
+cargo-args = ["-Zunstable-options", "-Zrustdoc-scrape-examples"]
+rustdoc-args = ["--cfg", "docsrs"]
+
+[features]
+auth = ["harpiya-auth"]
+cookie = ["dep:cookie", "reqwest/cookies", "harpiya-core/cookie"]
+debug = [
+    "minijinja?/debug",
+    "minijinja?/preserve_order",
+    "serde_json/preserve_order",
+    "tera?/preserve_order",
+    "toml/preserve_order",
+    "harpiya-core/debug",
+]
+i18n = ["dep:fluent", "dep:intl-memoizer", "dep:unic-langid"]
+http02 = ["dep:http02"]
+jwt = ["dep:jwt-simple", "auth", "harpiya-auth/jwt"]
+metrics = ["dep:metrics", "harpiya-core/metrics"]
+view = ["dep:convert_case", "dep:minijinja"]
+view-minijinja = ["view", "dep:minijinja"]
+view-tera = ["view", "dep:tera"]
+
+[dependencies]
+bytes = "1.9.0"
+cfg-if = "1.0"
+etag = "4.0.0"
+futures = "0.3.31"
+http = "1.2.0"
+mime_guess = "2.0.5"
+multer = "3.1.0"
+percent-encoding = "2.3.1"
+regex = "1.11.1"
+ryu = "1.0.18"
+serde_qs = "0.13.0"
+smallvec = "1.13.2"
+tracing = "0.1.41"
+url = "2.5.4"
+
+[dependencies.convert_case]
+version = "0.6.0"
+optional = true
+
+[dependencies.cookie]
+version = "0.18.1"
+optional = true
+
+[dependencies.fluent]
+version = "0.16.1"
+optional = true
+
+[dependencies.http02]
+package = "http"
+version = "0.2.12"
+optional = true
+
+[dependencies.intl-memoizer]
+version = "0.5.2"
+optional = true
+
+[dependencies.jwt-simple]
+version = "0.12.11"
+optional = true
+default-features = false
+features = ["pure-rust"]
+
+[dependencies.metrics]
+version = "0.24.1"
+optional = true
+
+[dependencies.minijinja]
+version = "2.5.0"
+optional = true
+features = ["loader"]
+
+[dependencies.reqwest]
+version = "0.12.9"
+default-features = false
+features = [
+    "blocking",
+    "gzip",
+    "json",
+    "multipart",
+]
+
+[dependencies.serde]
+version = "1.0.216"
+features = ["derive"]
+
+[dependencies.serde_json]
+version = "1.0.134"
+features = ["raw_value"]
+
+[dependencies.tera]
+version = "1.20.0"
+optional = true
+
+[dependencies.toml]
+version = "0.8.19"
+default-features = false
+
+[dependencies.unic-langid]
+version = "0.9.5"
+optional = true
+
+[dependencies.harpiya-auth]
+path = "../harpiya-auth"
+version = "0.2.0"
+optional = true
+
+[dependencies.harpiya-channel]
+path = "../harpiya-channel"
+version = "0.2.0"
+
+[dependencies.harpiya-core]
+path = "../harpiya-core"
+version = "0.30.0"
+features = ["http-client"]
+
+[dependencies.harpiya-storage]
+path = "../harpiya-storage"
+version = "0.2.0"
+features = ["http-client"]

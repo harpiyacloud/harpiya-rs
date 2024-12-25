@@ -1,0 +1,15 @@
+[workspace]
+resolver = "2"
+members = [
+    "axum-app",
+    "minimal-app",
+]
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
+
+[profile.server-dev]
+inherits = "dev"
+

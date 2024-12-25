@@ -1,0 +1,75 @@
+name = "Tenants"
+securities = []
+
+[[endpoints]]
+path = "/tenant/new"
+method = "POST"
+summary = "Creates a new tenant"
+
+[endpoints.body]
+schema = "/tenant/definition"
+
+[[endpoints]]
+path = "/tenant/{tenant_id}/delete"
+method = "POST"
+summary = "Deletes a tenant by ID"
+
+[[endpoints]]
+path = "/tenant/{tenant_id}/update"
+method = "POST"
+summary = "Updates a tenant by ID"
+
+[endpoints.body]
+schema = "/tenant/definition?action=update"
+
+[[endpoints]]
+path = "/tenant/{tenant_id}/view"
+method = "GET"
+summary = "Gets a tenant by ID"
+
+[[endpoints]]
+path = "/tenant/list"
+method = "GET"
+summary = "Finds a list of tenants"
+
+[endpoints.responses.200.headers]
+server-timing = "string"
+x-request-id = { type = "string", format = "uuid", description = "Request ID" }
+
+[endpoints.responses.200.content]
+status = "integer"
+success = "boolean"
+message = "string"
+request_id = { type = "string", format = "uuid" }
+
+[endpoints.responses.200.content.data]
+type = "object"
+entries = { type = "array", items = { schema = "/tenant/definition?action=list" } }
+num_entries = { type = "integer", default = 10 }
+
+[[endpoints]]
+path = "/tenant/import"
+method = "POST"
+summary = "Imports the tenant data"
+
+[endpoints.body]
+schema = "/tenant/definition?action=import"
+
+[[endpoints]]
+path = "/tenant/export"
+method = "GET"
+summary = "Exports the tenant data"
+
+[endpoints.query]
+format = { type = "string", enum = ["csv", "json", "jsonlines"], default = "json", description = "File format" }
+
+[schemas.tenantId]
+type = "integer"
+description = "Tenant ID"
+
+
+[models.tenant.status]
+translations = [
+    ["Active", "😄"],
+    ["Inactive", "😴"],
+]

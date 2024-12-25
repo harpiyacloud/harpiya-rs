@@ -1,0 +1,12 @@
+[package]
+name = "minimal-app"
+description = "A minimal example to run a server."
+version = "0.7.1"
+rust-version = "1.85"
+edition = "2024"
+publish = false
+
+[dependencies.harpiya-rs]
+path = "../../crates/harpiya-rs"
+version = "0.30.1"
+

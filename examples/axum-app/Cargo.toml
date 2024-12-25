@@ -1,0 +1,47 @@
+[package]
+name = "axum-app"
+description = "An example for axum integration."
+version = "0.17.1"
+rust-version = "1.85"
+edition = "2024"
+publish = false
+
+[dependencies]
+tracing = "0.1.41"
+
+[dependencies.axum]
+version = "0.7.9"
+default-features = false
+
+[dependencies.serde]
+version = "1.0.216"
+features = ["derive"]
+
+[dependencies.harpiya-rs]
+path = "../../crates/harpiya-rs"
+version = "0.30.1"
+features = [
+    "cookie",
+    "i18n",
+    "jwt",
+    "orm",
+    "view",
+]
+
+[dependencies.harpiya-core]
+path = "../../crates/harpiya-core"
+version = "0.30.1"
+features = ["env-filter", "validator-email"]
+
+[dependencies.harpiya-derive]
+path = "../../crates/harpiya-derive"
+version = "0.28.1"
+
+[dependencies.harpiya-model]
+path = "../../crates/harpiya-model"
+version = "0.28.1"
+
+[dependencies.harpiya-orm]
+path = "../../crates/harpiya-orm"
+version = "0.2.1"
+features = ["orm-postgres"]

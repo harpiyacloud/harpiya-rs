@@ -1,0 +1,114 @@
+[package]
+name = "harpiya-rs"
+description = "Next-generation framework for composable applications in Rust."
+version = "0.30.1"
+rust-version = "1.85"
+edition = "2024"
+readme = "README.md"
+
+[package.metadata.docs.rs]
+features = [
+    "auth",
+    "i18n",
+    "jwt",
+    "oidc",
+    "opa",
+    "orm",
+]
+cargo-args = ["-Zunstable-options", "-Zrustdoc-scrape-examples"]
+rustdoc-args = ["--cfg", "docsrs"]
+
+[features]
+auth = ["harpiya-auth", "harpiya-http?/auth"]
+cookie = ["harpiya-core/cookie", "harpiya-http?/cookie"]
+debug = ["harpiya-core/debug", "harpiya-http?/debug", "harpiya-openapi?/debug"]
+default = ["logger", "dep:harpiya-http", "dep:harpiya-openapi"]
+i18n = ["dep:harpiya-http", "harpiya-http/i18n"]
+jwt = ["auth", "harpiya-auth/jwt", "harpiya-http?/jwt"]
+logger = ["harpiya-core/tracing-log", "harpiya-core/tracing-subscriber"]
+metrics = ["harpiya-core/metrics", "harpiya-http?/metrics", "harpiya-storage/metrics"]
+oidc = ["auth", "harpiya-auth/oidc"]
+opa = ["auth", "harpiya-auth/opa"]
+orm = [
+    "harpiya-orm",
+    "harpiya-orm/openapi",
+]
+view = ["harpiya-http/view"]
+
+[dependencies]
+async-trait = "0.1.83"
+futures = "0.3.31"
+http = "1.2.0"
+serde_json = "1.0.134"
+tracing = "0.1.41"
+
+[dependencies.axum]
+version = "0.7.9"
+default-features = false
+features = [
+    "http1",
+    "matched-path",
+    "original-uri",
+    "tokio",
+]
+
+[dependencies.tokio]
+version = "1.42.0"
+features = [
+    "macros",
+    "parking_lot",
+    "rt-multi-thread",
+    "signal",
+]
+
+[dependencies.tower]
+version = "0.5.2"
+features = ["timeout"]
+
+[dependencies.tower-http]
+version = "0.6.2"
+features = [
+    "add-extension",
+    "catch-panic",
+    "compression-gzip",
+    "cors",
+    "decompression-gzip",
+    "fs",
+    "set-header",
+    "trace",
+]
+
+[dependencies.utoipa-rapidoc]
+version = "5.0.0"
+features = ["axum"]
+
+[dependencies.harpiya-core]
+path = "../harpiya-core"
+version = "0.30.0"
+features = ["runtime-tokio"]
+
+[dependencies.harpiya-http]
+path = "../harpiya-http"
+version = "0.2.0"
+optional = true
+
+[dependencies.harpiya-orm]
+path = "../harpiya-orm"
+version = "0.2.0"
+optional = true
+
+[dependencies.harpiya-openapi]
+path = "../harpiya-openapi"
+version = "0.1.0"
+optional = true
+
+
+[dependencies.harpiya-auth]
+path = "../harpiya-auth"
+version = "0.2.1"
+optional = true
+
+
+[dependencies.harpiya-storage]
+path = "../harpiya-storage"
+version = "0.2.0"

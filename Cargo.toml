@@ -1,0 +1,22 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/harpiya-auth",
+    "crates/harpiya-channel",
+    "crates/harpiya-chatbot",
+    "crates/harpiya-connector",
+    "crates/harpiya-core",
+    "crates/harpiya-derive",
+    "crates/harpiya-extra",
+    "crates/harpiya-http",
+    "crates/harpiya-model",
+    "crates/harpiya-openapi",
+    "crates/harpiya-orm",
+    "crates/harpiya-rs",
+    "crates/harpiya-storage",
+]
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
